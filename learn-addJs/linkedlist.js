@@ -72,14 +72,55 @@ class LinkedList {
     this.size++;
   }
 
-  //  Get an index
+  //  Get an element at index
+  getAt(index) {
+    let current = this.head;
+    let count = 0;
 
+    while(current) {
+      
+      if(count == index) {
+        console.log(current.data); 
+      }
+       
+        count++;
+        current= current.next;
+    }
+    return null;
+  }
 
-  // Remove at index
+  // Remove element at index
+  removeAt(index) {
 
+    if(index > 0 && index > this.size){
+      return;
+    } 
+
+    let current = this.head;
+    let previous;
+    let count = 0;
+
+    // Remove FIRST
+    if(index == 0) {
+      this.head = current.next;
+    } else {
+      while(current < index) {
+        count++;
+        previous = current;
+        current = current.next;
+      }
+      precious.next = current.next;
+    }
+    this.size--; 
+      
+  }
 
   // Clear the list
+  clearList() {
+    this.head = null;
+    this.size = 0;
 
+  }
 
   // Print list data
   printListData () {
@@ -99,8 +140,12 @@ class LinkedList {
   ll.insertFirst(200);
   ll.insertFirst(300);
   ll.insertLast(400);
-
   ll.insertAt(500, 2);
+
+  ll.clearList(); 
 
   ll.printListData();
 
+  // ll.getAt(2);
+
+  ll.removeAt(1);
